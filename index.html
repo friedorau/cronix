@@ -19,9 +19,30 @@
   </style>
 </head>
 <body>
-  <div id="start" class="vw-100 vh-100 bg-primary-subtle">
-    <h1>START</h1>
-    <button type="button" class="btn btn-primary scroll" scrollTo="sessions">Primary</button>
+  <div id="start" class="vw-100 vh-100 text-center bg-primary-subtle">
+    <h1>CRONIX</h1>
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="col-12">
+        <label for="inputTeamName" class="form-label">Spieler- / Teamname</label>
+        <input type="text" class="form-control" id="inputTeamName" required>
+        <div class="valid-feedback">
+          Name geht klar!
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="inputGamePin" class="form-label">Spiel-PIN</label>
+        <input type="text" class="form-control" id="inputGamePin">
+        <div class="valid-feedback">
+          Spiel-PIN OK!
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Vorhandenes Spiel starten</button>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary" type="submit">Neues Spiel anlegen</button>
+      </div>
+    </form>
   </div>
 
   <div id="sessions" class="vw-100 vh-100 bg-info-subtle">
