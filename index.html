@@ -21,7 +21,7 @@
 <body>
   <div id="start" class="vw-100 vh-100 bg-primary-subtle">
     <h1>START</h1>
-    <button id="test" type="button" class="btn btn-primary scroll" scrollTo="sessions">Primary</button>
+    <button type="button" class="btn btn-primary scroll" scrollTo="sessions">Primary</button>
   </div>
 
   <div id="sessions" class="vw-100 vh-100 bg-info-subtle">
@@ -36,6 +36,15 @@
   <script src="/socket.io/socket.io.js"></script>
 
   <script>
+    
+    $(".btn.scroll").click(function() {
+      $(this).remove();
+      var scrollToEl = $(this).attr("scrollTo");
+      $("html, body").animate({
+        scrollTop: $("#"+scrollToEl).offset().top
+      }, 2000);
+    });
+    
     let counter = 0;
 
     const socket = io({
@@ -65,10 +74,6 @@
       messages.appendChild(item);
       window.scrollTo(0, document.body.scrollHeight);
       socket.auth.serverOffset = serverOffset;
-    });
-    
-    $("#test").click(function() {
-      $(this).remove();
     });
 
   </script>
