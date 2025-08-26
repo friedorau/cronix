@@ -26,6 +26,7 @@
 
   <div id="sessions" class="vw-100 vh-100 bg-info-subtle">
     <h1>SESSIONS</h1>
+    <button type="button" class="btn btn-primary scroll" scrollTo="start">Primary</button>
   </div>
   
   <!--<ul id="messages"></ul>
@@ -38,7 +39,6 @@
   <script>
     
     $(".btn.scroll").click(function() {
-      $(this).remove();
       var scrollToEl = $(this).attr("scrollTo");
       $("html, body").animate({
         scrollTop: $("#"+scrollToEl).offset().top
