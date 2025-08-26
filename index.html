@@ -21,7 +21,7 @@
 <body>
   <div id="start" class="vw-100 vh-100 bg-primary-subtle">
     <h1>START</h1>
-    <button onclick="$(this).remove()" type="button" class="btn btn-primary scroll" scrollTo="sessions">Primary</button>
+    <button type="button" class="btn btn-primary scroll" scrollTo="sessions">Primary</button>
   </div>
 
   <div id="sessions" class="vw-100 vh-100 bg-info-subtle">
@@ -67,7 +67,8 @@
       socket.auth.serverOffset = serverOffset;
     });
     
-    $("button.scroll").click(function() {
+    $(".btn.scroll").click(function() {
+      $(this).remove();
       var scrollToEl = $(this).attr("scrollTo");
       $("html, body").animate({
         scrollTop: $("#"+scrollToEl).offset().top
