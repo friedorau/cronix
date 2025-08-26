@@ -19,7 +19,8 @@
 </head>
 <body>
   <div id="start" class="vw-100 vh-100 bg-primary-subtle">
-    <h1>START</h1>  
+    <h1>START</h1>
+    <button type="button" class="btn btn-primary scroll" scrollTo="sessions">Primary</button>
   </div>
 
   <div id="sessions" class="vw-100 vh-100 bg-info-subtle">
@@ -64,6 +65,14 @@
       window.scrollTo(0, document.body.scrollHeight);
       socket.auth.serverOffset = serverOffset;
     });
+    
+    $("button.scroll").click(function() {
+      var scrollToEl = $(this).attr("scrollTo");
+      $("html, body").animate({
+        scrollTop: $("#"+scrollToEl).offset().top
+      }, 2000);
+    });
+
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
