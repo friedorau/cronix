@@ -69,10 +69,6 @@
     
     $(".btn.scroll").click(function() {
       $(this).remove();
-      var scrollToEl = $(this).attr("scrollTo");
-      $("html, body").animate({
-        scrollTop: $("#"+scrollToEl).offset().top
-      }, 2000);
     });
 
   </script>
