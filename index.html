@@ -40,10 +40,10 @@
         <button class="btn btn-primary" type="submit">Spiel mit PIN beitreten</button>
       </div>
       <div class="col-6 offset-3">
-        <button class="btn btn-primary" type="submit">Offenem Spiel beitreten</button>
+        <button class="btn btn-primary">Offenem Spiel beitreten</button>
       </div>
       <div class="col-6 offset-3">
-        <button class="btn btn-primary" type="submit">Neues Spiel starten</button>
+        <button id="btnNewGame" class="btn btn-primary">Neues Spiel starten</button>
       </div>
     </form>
   </div>
@@ -79,9 +79,11 @@
       retries: 3,
     });
 
-    socket.emit("getGames", (response) => {
-      console.log(response.status);
-    });
+    $("#btnNewGame").click(function() {
+      socket.emit("getGames", (response) => {
+        console.log(response.status);
+      });
+    }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
 </body>
