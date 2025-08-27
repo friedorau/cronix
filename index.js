@@ -47,14 +47,19 @@ if (cluster.isPrimary) {
 
   var games = { "kingsofpop": { "timeline": [{ "title": "Man in the Mirror", "artist": "Michael Jackson", "year": 1990, "link": "2u2udGmop1z67EPpr91km7" }], "JvTS9AC6gZIm0czEAAAN": { "name": "Friedo", "score": 10, "timeline": [{ "title": "Man in the Mirror", "artist": "Michael Jackson", "year": 1990, "link": "2u2udGmop1z67EPpr91km7" }] } } };
   
-  io.on('connection', async (socket) => {
+  io.on('connection', (socket) => {
     console.log(`user connected: ${socket.id}`);
     
     socket.on('disconnect', () => {
       console.log(`user disconnected: ${socket.id}`);
     });
 
-    socket.on("getGames", async (callback) => {
+    socket.on("hello", (arg, callback) => {
+      console.log(arg); // "world"
+      callback("got it");
+    });
+    
+    socket.on("getGames", (callback) => {
       callback({
         status: "ok"
       });
