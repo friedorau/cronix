@@ -55,7 +55,9 @@ if (cluster.isPrimary) {
     });
 
     socket.on("getGames", (callback) => {
-      callback(games);
+      callback({
+        status: "ok"
+      });
     });
     
     socket.on('chat message', async (msg, clientOffset, callback) => {
