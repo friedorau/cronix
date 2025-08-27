@@ -75,7 +75,8 @@
       console.log(response); // "got it"
     });
     
-    $("#btnNewGame").click(function() {
+    $("#btnNewGame").click(function(e) {
+      e.preventDefault();
       socket.emit("getGames", (response) => {
         console.log(response.status);
       });
