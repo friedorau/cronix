@@ -79,6 +79,10 @@
       retries: 3,
     });
 
+    socket.emit("hello", "world", (response) => {
+      console.log(response); // "got it"
+    });
+    
     $("#btnNewGame").click(function() {
       socket.emit("getGames", (response) => {
         console.log(response.status);
