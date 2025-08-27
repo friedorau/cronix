@@ -54,7 +54,7 @@ if (cluster.isPrimary) {
       console.log(`user disconnected: ${socket.id}`);
     });
 
-    socket.on("getGames", (callback) => {
+    socket.on("getGames", async (callback) => {
       callback({
         status: "ok"
       });
