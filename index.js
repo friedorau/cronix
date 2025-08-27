@@ -60,9 +60,7 @@ if (cluster.isPrimary) {
     });
     
     socket.on("getGames", (callback) => {
-      callback({
-        status: "ok"
-      });
+      callback(games);
     });
     
   });
