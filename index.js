@@ -46,9 +46,7 @@ if (cluster.isPrimary) {
   });
 
   io.on('connection', async (socket) => {
-    const userId = await computeUserIdFromHeaders(socket);
-    console.log(userID);
-    console.log(socket.id);
+    console.log('SocketID: ${socket.id}');
     
     socket.on('disconnect', () => {
       console.log('user disconnected');
