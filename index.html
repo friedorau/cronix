@@ -68,16 +68,8 @@
         scrollTop: $("#"+scrollToEl).offset().top
       }, 500);
     });
-    
-    let counter = 0;
 
-    const socket = io({
-      auth: {
-        serverOffset: 0
-      },
-      ackTimeout: 10000,
-      retries: 3,
-    });
+    const socket = io();
 
     socket.emit("hello", "world", (response) => {
       console.log(response); // "got it"
