@@ -78,7 +78,7 @@
     $("#btnNewGame").click(function(e) {
       e.preventDefault();
       socket.emit("getGames", (response) => {
-        console.log(response.status);
+        console.log(response);
       });
     });
     
