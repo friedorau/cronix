@@ -7,6 +7,7 @@ import { availableParallelism } from 'node:os';
 import cluster from 'node:cluster';
 import { createAdapter, setupPrimary } from '@socket.io/cluster-adapter';
 import OpenAI from "openai";
+import SpotifyWebApi from "spotify-web-api-node";
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
@@ -267,5 +268,38 @@ if (cluster.isPrimary) {
   ];
 
 console.log(songs[1].title);
+
+// Spotify API initialisieren
+const spotifyApi = new SpotifyWebApi({
+  clientId: process.env.SPOTIFY_CLIENT_ID,
+  clientSecret: process.env.SPOTIFY_CLIENT_SECRET
+});
+
+// Zugriffstoken holen
+async function getToken() {
+  try {
+    const data = await spotifyApi.clientCredentialsGrant();
+    spotifyApi.setAccessToken(data.body['access_token']);
+    console.log("Zugriffstoken erhalten!");
+  } catch (err) {
+    console.error("Fehler beim Abrufen des Tokens:", err);
+  }
+}
+
+// Beispiel: Suche nach einem Song
+async function searchSong(query) {
+  try {
+    const result = await spotifyApi.searchTracks(query);
+    console.log(result.body.tracks.items[0]);
+  } catch (err) {
+    console.error("Fehler bei der Suche:", err);
+  }
+}
+
+// Alles zusammen
+(async () => {
+  await getToken();
+  await searchSong("Bohemian Rhapsody");
+})();
 
 }
