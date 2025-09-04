@@ -9,7 +9,7 @@ import { createAdapter, setupPrimary } from '@socket.io/cluster-adapter';
 import OpenAI from "openai";
 
 const openai = new OpenAI({
-  apiKey: ${{ secrets.API_KEY }}
+  apiKey: process.env.API_KEY
 });
 
 const response = openai.responses.create({
