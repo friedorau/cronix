@@ -15,7 +15,7 @@ const openai = new OpenAI({
 const response = openai.responses.create({
   model: "gpt-5-nano",
   input: "Erstelle ein JSON-Object mit einem Array aus Information zu 100 verschiedenen Songs zum Thema Pop Classics. Jedes Array-Element soll ein Objekt bestehend aus „title“ (Songtitel), „artist“ (Interpret) und „year“ (Veröffentlichungsjahr) sein.",
-  store: true,
+  store: true
 });
 
 response.then((result) => console.log(result.output_text));
