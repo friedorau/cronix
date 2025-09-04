@@ -81,4 +81,189 @@ if (cluster.isPrimary) {
   server.listen(port, () => {
     console.log(`server running at http://localhost:${port}`);
   });
-}
+  
+  const songs = [
+    {
+      "title": "I Want to Hold Your Hand",
+      "artist": "The Beatles",
+      "year": 1963,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Can’t Help Falling in Love",
+      "artist": "Elvis Presley",
+      "year": 1961,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "My Girl",
+      "artist": "The Temptations",
+      "year": 1965,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Good Vibrations",
+      "artist": "The Beach Boys",
+      "year": 1966,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Dancing in the Street",
+      "artist": "Martha & The Vandellas",
+      "year": 1964,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Dancing Queen",
+      "artist": "ABBA",
+      "year": 1976,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Stayin’ Alive",
+      "artist": "Bee Gees",
+      "year": 1977,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Let It Be",
+      "artist": "The Beatles",
+      "year": 1970,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Superstition",
+      "artist": "Stevie Wonder",
+      "year": 1972,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Hotel California",
+      "artist": "Eagles",
+      "year": 1976,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Billie Jean",
+      "artist": "Michael Jackson",
+      "year": 1982,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Girls Just Want to Have Fun",
+      "artist": "Cyndi Lauper",
+      "year": 1983,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Take On Me",
+      "artist": "a-ha",
+      "year": 1985,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Sweet Child O’ Mine",
+      "artist": "Guns N’ Roses",
+      "year": 1987,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Like a Prayer",
+      "artist": "Madonna",
+      "year": 1989,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "...Baby One More Time",
+      "artist": "Britney Spears",
+      "year": 1999,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "I Will Always Love You",
+      "artist": "Whitney Houston",
+      "year": 1992,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Wannabe",
+      "artist": "Spice Girls",
+      "year": 1996,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Smells Like Teen Spirit",
+      "artist": "Nirvana",
+      "year": 1991,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Vogue",
+      "artist": "Madonna",
+      "year": 1990,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Crazy in Love",
+      "artist": "Beyoncé feat. Jay-Z",
+      "year": 2003,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Since U Been Gone",
+      "artist": "Kelly Clarkson",
+      "year": 2004,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Yeah!",
+      "artist": "Usher ft. Lil Jon & Ludacris",
+      "year": 2004,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Poker Face",
+      "artist": "Lady Gaga",
+      "year": 2008,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Hips Don’t Lie",
+      "artist": "Shakira ft. Wyclef Jean",
+      "year": 2005,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Rolling in the Deep",
+      "artist": "Adele",
+      "year": 2010,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Uptown Funk",
+      "artist": "Mark Ronson ft. Bruno Mars",
+      "year": 2014,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Blinding Lights",
+      "artist": "The Weeknd",
+      "year": 2019,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Butter",
+      "artist": "BTS",
+      "year": 2021,
+      "uri": "spotify:track:PUT_URI_HERE"
+    },
+    {
+      "title": "Shake It Off",
+      "artist": "Taylor Swift",
+      "year": 2014,
+      "uri": "spotify:track:PUT_URI_HERE"
+    }
+    // ... bis insgesamt 100 Songs
+  ];
+
+console.log(songs[1].title);
