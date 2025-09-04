@@ -17,7 +17,7 @@ if (cluster.isPrimary) {
 
   setupPrimary();
 } else {
-  const db = await open({
+  /*const db = await open({
     filename: 'chat.db',
     driver: sqlite3.Database
   });
@@ -28,7 +28,7 @@ if (cluster.isPrimary) {
       client_offset TEXT UNIQUE,
       content TEXT
     );
-  `);
+  `);*/
 
   const app = express();
   const server = createServer(app);
