@@ -1,0 +1,21 @@
+name: Node.js App
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Run App with Secrets
+        env:
+          API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          node index.js
