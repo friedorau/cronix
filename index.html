@@ -84,7 +84,9 @@
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
       const element = document.getElementById('embed-iframe');
       const options = {
-          uri: 'https://open.spotify.com/intl-de/track/5LFzj73ZwSep0377OQj4bp?si=28d8124493634afa'
+          width: "1",
+          height: "1",
+          uri: 'https://open.spotify.com/intl-de/track/5GMlEA5ivPzZmCJ9VTCZtI?si=950824c500424d86'
         };
       const callback = (EmbedController) => {
         $("#spotifyPlay").click(function(e) {
