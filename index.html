@@ -88,11 +88,11 @@
         };
       const callback = (EmbedController) => {
         $("#spotifyPlay").click(function(e) {
-          IFrameAPI.play();
+          EmbedController.play();
         });
 
         $("#spotifyPause").click(function(e) {
-          IFrameAPI.pause();
+          EmbedController.pause();
         });        
       };
       IFrameAPI.createController(element, options, callback);
