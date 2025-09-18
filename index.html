@@ -29,13 +29,19 @@
         </div>
       </div>
       <div class="col-6 offset-3">
-        <button class="btn btn-primary" type="submit">Spiel mit PIN beitreten</button>
+        <button class="btn btn-lg btn-primary" type="submit">Spiel mit PIN beitreten</button>
       </div>
       <div class="col-6 offset-3">
-        <button class="btn btn-primary">Offenem Spiel beitreten</button>
+        <button class="btn btn-lg btn-primary">Offenem Spiel beitreten</button>
       </div>
       <div class="col-6 offset-3">
-        <button id="btnNewGame" class="btn btn-primary">Neues Spiel starten</button>
+        <button id="btnNewGame" class="btn btn-lg btn-primary">Neues Spiel starten</button>
+      </div>
+      <div class="col-6 offset-3">
+        <button id="spotifyPlay" class="btn btn-lg btn-primary">Play</button>
+      </div>
+      <div class="col-6 offset-3">
+        <button id="spotifyPause" class="btn btn-lg btn-primary">Pause</button>
       </div>
     </form>
     <div id="embed-iframe"></div>
@@ -76,15 +82,19 @@
     });
 
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
-      //
-    };
-
-    window.onSpotifyIframeApiReady = (IFrameAPI) => {
       const element = document.getElementById('embed-iframe');
       const options = {
           uri: 'https://open.spotify.com/intl-de/track/5LFzj73ZwSep0377OQj4bp?si=28d8124493634afa'
         };
-      const callback = (EmbedController) => {};
+      const callback = (EmbedController) => {
+        $("#spotifyPlay").click(function(e) {
+          IFrameAPI.play();
+        });
+
+        $("#spotifyPause").click(function(e) {
+          IFrameAPI.pause();
+        });        
+      };
       IFrameAPI.createController(element, options, callback);
     };
     
