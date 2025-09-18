@@ -38,7 +38,7 @@
         <button id="btnNewGame" class="btn btn-primary">Neues Spiel starten</button>
       </div>
     </form>
-    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/1hKdDCpiI9mqz1jVHRKG0E?utm_source=generator" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+    <div id="embed-iframe"></div>
   </div>
 
   <div id="rooms" class="vw-100 vh-100 bg-info-subtle">
@@ -74,8 +74,22 @@
         console.log(response);
       });
     });
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+      //
+    };
+
+    window.onSpotifyIframeApiReady = (IFrameAPI) => {
+      const element = document.getElementById('embed-iframe');
+      const options = {
+          uri: 'https://open.spotify.com/intl-de/track/5LFzj73ZwSep0377OQj4bp?si=28d8124493634afa'
+        };
+      const callback = (EmbedController) => {};
+      IFrameAPI.createController(element, options, callback);
+    };
     
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
 </body>
 </html>
