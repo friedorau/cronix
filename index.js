@@ -3,9 +3,9 @@ import { createServer } from 'node:http';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { Server } from 'socket.io';
-import { availableParallelism } from 'node:os';
+/*import { availableParallelism } from 'node:os';
 import cluster from 'node:cluster';
-import { createAdapter, setupPrimary } from '@socket.io/cluster-adapter';
+import { createAdapter, setupPrimary } from '@socket.io/cluster-adapter';*/
 import OpenAI from "openai";
 import SpotifyWebApi from "spotify-web-api-node";
 
@@ -21,7 +21,7 @@ const openai = new OpenAI({
 
 response.then((result) => console.log(result.output_text));*/
 
-if (cluster.isPrimary) {
+/*if (cluster.isPrimary) {
   const numCPUs = availableParallelism();
   for (let i = 0; i < numCPUs; i++) {
     cluster.fork({
@@ -31,7 +31,7 @@ if (cluster.isPrimary) {
 
   setupPrimary();
 } else {
-  /*const db = await open({
+  const db = await open({
     filename: 'chat.db',
     driver: sqlite3.Database
   });
@@ -47,8 +47,8 @@ if (cluster.isPrimary) {
   const app = express();
   const server = createServer(app);
   const io = new Server(server, {
-    connectionStateRecovery: {},
-    adapter: createAdapter()
+    connectionStateRecovery: {}/*,
+    adapter: createAdapter()*/
   });
 
   const __dirname = dirname(fileURLToPath(import.meta.url));
