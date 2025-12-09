@@ -18,7 +18,7 @@ const pool = new Pool({
 async function testConnection() {
   const client = await pool.connect();
   try {
-    const res = await client.query("INSERT INTO events (data) VALUES ( '{"uri": "https://open.spotify.com/intl-de/track/4pbG9SUmWIvsROVLF0zF9s", "year": 1963, "title": "I Want to Hold Your Hand", "artist": "The Beatles"}')");
+    const res = await client.query('SELECT * FROM events');
     console.log('Database connected:', res.rows[0]);
   } finally {
     client.release();
