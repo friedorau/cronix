@@ -18,7 +18,7 @@ const pool = new Pool({
 async function testConnection() {
   const client = await pool.connect();
   try {
-    const res = await client.query('SELECT NOW()');
+    const res = await client.query('CREATE TABLE events ( id BIGSERIAL PRIMARY KEY, data JSONB )');
     console.log('Database connected:', res.rows[0]);
   } finally {
     client.release();
