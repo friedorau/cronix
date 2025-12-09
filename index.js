@@ -8,6 +8,24 @@ import cluster from 'node:cluster';
 import { createAdapter, setupPrimary } from '@socket.io/cluster-adapter';*/
 import OpenAI from "openai";
 import SpotifyWebApi from "spotify-web-api-node";
+import { Pool } from 'pg';
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }  // wichtig bei Supabase
+});
+
+async function testConnection() {
+  const client = await pool.connect();
+  try {
+    const res = await client.query('SELECT NOW()');
+    console.log('Database connected:', res.rows[0]);
+  } finally {
+    client.release();
+  }
+}
+
+testConnection();
 
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY,
