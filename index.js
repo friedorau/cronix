@@ -12,7 +12,7 @@ import { Pool } from 'pg';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: { rejectUnauthorized: false }  // wichtig bei Supabase
+  ssl: { rejectUnauthorized: false } // wichtig bei Koyeb
 });
 
 async function testConnection() {
