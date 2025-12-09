@@ -125,24 +125,24 @@
       <div class="slide">
         Slide 1
         <div class="d-flex justify-content-center gap-3 mt-3">
-          <button class="btn btn-dark" id="prevSlide">◀️</button>
-          <button class="btn btn-dark" id="nextSlide">▶️</button>
+          <button class="btn btn-dark prevSlide">◀️</button>
+          <button class="btn btn-dark nextSlide">▶️</button>
           <button class="btn btn-outline-dark btn-next mt-4" data-target="#section4">Zum nächsten Bereich</button>
         </div>
       </div>
       <div class="slide">
         Slide 2
         <div class="d-flex justify-content-center gap-3 mt-3">
-          <button class="btn btn-dark" id="prevSlide">◀️</button>
-          <button class="btn btn-dark" id="nextSlide">▶️</button>
+          <button class="btn btn-dark prevSlide">◀️</button>
+          <button class="btn btn-dark nextSlide">▶️</button>
           <button class="btn btn-outline-dark btn-next mt-4" data-target="#section4">Zum nächsten Bereich</button>
         </div>
       </div>
       <div class="slide">
         Slide 3
         <div class="d-flex justify-content-center gap-3 mt-3">
-          <button class="btn btn-dark" id="prevSlide">◀️</button>
-          <button class="btn btn-dark" id="nextSlide">▶️</button>
+          <button class="btn btn-dark prevSlide">◀️</button>
+          <button class="btn btn-dark nextSlide">▶️</button>
           <button class="btn btn-outline-dark btn-next mt-4" data-target="#section4">Zum nächsten Bereich</button>
         </div>
       </div>
@@ -178,14 +178,14 @@
       let currentSlide = 0;
       const totalSlides = 3;
 
-      $("#nextSlide").click(function() {
+      $(".nextSlide").click(function() {
         if (currentSlide < totalSlides - 1) {
           currentSlide++;
           $("#slides").css("transform", `translateX(-${currentSlide * 100}vw)`);
         }
       });
 
-      $("#prevSlide").click(function() {
+      $(".prevSlide").click(function() {
         if (currentSlide > 0) {
           currentSlide--;
           $("#slides").css("transform", `translateX(-${currentSlide * 100}vw)`);
