@@ -7,11 +7,69 @@
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
   <style>
-    
+    html, body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    section {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+      text-align: center;
+    }
+
+    #section1 { background: #007bff; }
+    #section2 { background: #28a745; }
+    #section3 { background: #ffc107; color: black; overflow: hidden; }
+    #section4 { background: #dc3545; }
+
+    /* --- horizontale Slides --- */
+    .horizontal-container {
+      display: flex;
+      width: 300vw; /* 3 Slides = 3x 100vw */
+      height: 100%;
+      transition: transform 0.8s ease-in-out;
+    }
+
+    .slide {
+      width: 100vw;
+      height: 100vh;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      color: white;
+    }
+
+    .slide:nth-child(1) { background: #6c757d; }
+    .slide:nth-child(2) { background: #17a2b8; }
+    .slide:nth-child(3) { background: #6610f2; }
+
+    .btn-next {
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
-  <div id="start" class="vw-100 vh-100 text-center bg-primary-subtle container">
+
+   <!-- Navigation -->
+  <nav class="navbar navbar-dark bg-dark fixed-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">One-Pager Mix</a>
+    </div>
+  </nav>
+
+  <!-- Bereich 1 -->
+  <section id="section1">
+    <div>Vertikaler Bereich 1</div>
     <h1>CRONIX</h1>
     <form class="row g-3 needs-validation" novalidate>
       <div class="col-6 offset-3">
@@ -45,28 +103,86 @@
       </div>
     </form>
     <div id="embed-iframe"></div>
-  </div>
 
-  <div id="rooms" class="vw-100 vh-100 bg-info-subtle">
+    <button class="btn btn-light btn-next" data-target="#section2">Weiter</button>
+  </section>
+
+  <!-- Bereich 2 -->
+  <section id="section2">
+    <div>Vertikaler Bereich 2</div>
+
     <h1>SESSIONS</h1>
     <button type="button" class="btn btn-primary scroll" scrollTo="start">Primary</button>
-  </div>
-  
-  <!--<ul id="messages"></ul>
-  <form id="form" action="">
-    <input id="input" autocomplete="off" /><button>Send</button>
-  </form>-->
+    
+    <div class="d-flex gap-3 mt-3">
+      <button class="btn btn-outline-light btn-next" data-target="#section1">Zurück</button>
+      <button class="btn btn-light btn-next" data-target="#section3">Weiter</button>
+    </div>
+  </section>
+
+  <!-- Bereich 3 – horizontale Slides -->
+  <section id="section3" class="d-flex flex-column">
+    <div>Horizontale Sektion mit 3 Slides</div>
+
+    <div class="horizontal-container" id="slides">
+      <div class="slide">Slide 1</div>
+      <div class="slide">Slide 2</div>
+      <div class="slide">Slide 3</div>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 mt-3">
+      <button class="btn btn-dark" id="prevSlide">◀️</button>
+      <button class="btn btn-dark" id="nextSlide">▶️</button>
+    </div>
+
+    <button class="btn btn-outline-dark btn-next mt-4" data-target="#section4">Zum nächsten Bereich</button>
+  </section>
+
+  <!-- Bereich 4 -->
+  <section id="section4">
+    <div>Vertikaler Bereich 4 🎉</div>
+    <button class="btn btn-light btn-next" data-target="#section1">Zurück zum Anfang</button>
+  </section>
   
   <script src="/socket.io/socket.io.js"></script>
 
   <script>
+    $(document).ready(function() {
+      // Vertikales Scrollen
+      $(".btn-next").click(function() {
+        const target = $($(this).data("target"));
+        $("html, body").animate({
+          scrollTop: target.offset().top
+        }, 800);
+      });
+
+      // Horizontaler Slider
+      let currentSlide = 0;
+      const totalSlides = 3;
+
+      $("#nextSlide").click(function() {
+        if (currentSlide < totalSlides - 1) {
+          currentSlide++;
+          $("#slides").css("transform", `translateX(-${currentSlide * 100}vw)`);
+        }
+      });
+
+      $("#prevSlide").click(function() {
+        if (currentSlide > 0) {
+          currentSlide--;
+          $("#slides").css("transform", `translateX(-${currentSlide * 100}vw)`);
+        }
+      });
+    });
+
+
     
-    $(".btn.scroll").click(function() {
+    /*$(".btn.scroll").click(function() {
       var scrollToEl = $(this).attr("scrollTo");
       $("html, body").animate({
         scrollTop: $("#"+scrollToEl).offset().top
       }, 500);
-    });
+    });*/
 
     const socket = io();
 
