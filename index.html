@@ -168,9 +168,10 @@
   <script>
     $(document).ready(function() {
       // Vertikales Scrollen
-      $(".btn-next").click(function() {
+      $(".btn-next").click(function(e) {
+        e.preventDefault();
         const target = $($(this).data("target"));
-        $("html").stop(true).animate({
+        $("html").animate({
           scrollTop: target.offset().top
         }, 800);
       });
