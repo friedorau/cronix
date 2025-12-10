@@ -84,8 +84,12 @@ response.then((result) => console.log(result.output_text));*/
       console.log(`user disconnected: ${socket.id}`);
     });
 
-    socket.on("hello", (arg, callback) => {
+    /*socket.on("hello", (arg, callback) => {
       console.log(arg); // "world"
+      callback(socket.id);
+    });*/
+
+    socket.on("randomName", (callback) => {
       callback(socket.id);
     });
     
