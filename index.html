@@ -73,29 +73,28 @@
       <div class="col col-md-6">
         <h1>CRONIX</h1>
         <div class="input-group mb-3">
-          <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="input-name">
-          <span class="input-group-text" id="input-name"></span>
+          <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="input-name" id="input-name">
         </div>
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Spiel-PIN" aria-label="Spiel-PIN" aria-describedby="button-joinwithpin">
           <button class="btn btn-outline-secondary" type="button" id="button-joinwithpin">Spiel mit PIN beitreten</button>
         </div>
         <div class="input-group mb-3">
-          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Spiel beitreten</button>
-          <ul class="dropdown-menu">
-            <li><button class="dropdown-item" type="button" id="button-join-1">Schlager extreme</button></li>
-            <li><button class="dropdown-item" type="button" id="button-join-2">Evergreens</button></li>
-            <li><button class="dropdown-item" type="button" id="button-join-3">Jazz</button></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><button class="dropdown-item" type="button" id="button-join-4">Musical</button></li>
-          </ul>
-        </div>
+          <select class="form-select" id="inputGroupSelectGame" aria-label="Spiel auswählen und beitreten">
+            <option selected>Spiel auswählen</option>
+            <option value="1">Schlager</option>
+            <option value="2">Pop</option>
+            <option value="3">Musical</option>
+          </select>
+          <button class="btn btn-outline-secondary" type="button">Spiel beitreten</button>
+        </div>        
         <div class="input-group mb-3">
           <input type="text" class="form-control" placeholder="Spiel-Titel" aria-label="Spiel-Titel" aria-describedby="button-creategame">
           <button class="btn btn-outline-secondary" type="button" id="button-creategame">Neues Spiel erstellen</button>
         </div>
         <div class="input-group">
           <button class="btn btn-outline-secondary" type="button" id="spotifyPlay">Play</button>
+          <span class="input-group-text">Spotify</span>
           <button class="btn btn-outline-secondary" type="button" id="spotifyPause">Play</button>
         </div>    
         <div id="embed-iframe"></div>
