@@ -6,6 +6,11 @@
   <title>CRONIX</title>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link href="https://fonts.googleapis.com/css2?family=Nabla&display=swap" rel="stylesheet">
+  
   <style>
     html, body {
       margin: 0;
@@ -30,7 +35,18 @@
                     linear-gradient(135deg, #fbc2eb, #a6c1ee);
         background-attachment: fixed;*/   
     }
-    
+
+
+    .nabla {
+      font-family: "Nabla", system-ui;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+      font-variation-settings:
+        "EDPT" 100,
+        "EHLT" 12;
+    }
+
     section {
       width: 100%;
       height: 100vh;
@@ -91,7 +107,7 @@
       <div class="row">
         <div class="col-10 col-sm-8 col-md-6">
           <form>
-            <h1>CRONIX</h1>
+            <h1 class="nabla">CRONIX</h1>
             <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="input-name" id="input-name">
               <label class="input-group-text" for="input-name">Name</label>
