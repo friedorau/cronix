@@ -170,9 +170,9 @@
       // Vertikales Scrollen
       $(".btn-next").click(function() {
         const target = $($(this).data("target"));
-        $("html, body").animate({
+        $("html").animate({
           scrollTop: target.offset().top
-        }, 800, "linear");
+        }, 800);
       });
 
       // Horizontaler Slider
