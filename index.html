@@ -170,7 +170,7 @@
       // Vertikales Scrollen
       $(".btn-next").click(function() {
         const target = $($(this).data("target"));
-        $("html").animate({
+        $("html").stop(true).animate({
           scrollTop: target.offset().top
         }, 800);
       });
