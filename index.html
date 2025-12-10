@@ -20,12 +20,11 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
       color: white;
       text-align: center;
     }
 
-    #section1 { background: #007bff; }
+    #start { background: #007bff; }
     #section2 { background: #28a745; }
     #section3 { background: #ffc107; color: black; overflow: hidden; }
     #section4 { background: #dc3545; }
@@ -69,37 +68,41 @@
   </nav>
 
   <!-- Bereich 1 -->
-  <section id="section1">
-    <h1>CRONIX</h1>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="input-name">
-      <span class="input-group-text" id="input-name"></span>
+  <section id="start">
+    <div class="row align-items-center">
+      <div class="col col-md-6">
+        <h1>CRONIX</h1>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="input-name">
+          <span class="input-group-text" id="input-name"></span>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Spiel-PIN" aria-label="Spiel-PIN" aria-describedby="button-joinwithpin">
+          <button class="btn btn-outline-secondary" type="button" id="button-joinwithpin">Spiel mit PIN beitreten</button>
+        </div>
+        <div class="input-group mb-3">
+          <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Spiel beitreten</button>
+          <ul class="dropdown-menu">
+            <li><button class="dropdown-item" type="button" id="button-join-1">Schlager extreme</button></li>
+            <li><button class="dropdown-item" type="button" id="button-join-2">Evergreens</button></li>
+            <li><button class="dropdown-item" type="button" id="button-join-3">Jazz</button></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><button class="dropdown-item" type="button" id="button-join-4">Musical</button></li>
+          </ul>
+        </div>
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Spiel-Titel" aria-label="Spiel-Titel" aria-describedby="button-creategame">
+          <button class="btn btn-outline-secondary" type="button" id="button-creategame">Neues Spiel erstellen</button>
+        </div>
+        <div class="input-group">
+          <button class="btn btn-outline-secondary" type="button" id="spotifyPlay">Play</button>
+          <button class="btn btn-outline-secondary" type="button" id="spotifyPause">Play</button>
+        </div>    
+        <div id="embed-iframe"></div>
+    
+        <!--<button class="btn btn-light btn-next" data-target="#section2">Weiter</button>-->
+      </div>
     </div>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Spiel-PIN" aria-label="Spiel-PIN" aria-describedby="button-joinwithpin">
-      <button class="btn btn-outline-secondary" type="button" id="button-joinwithpin">Spiel mit PIN beitreten</button>
-    </div>
-    <div class="input-group mb-3">
-      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Spiel beitreten</button>
-      <ul class="dropdown-menu">
-        <li><button class="dropdown-item" type="button" id="button-join-1">Schlager extreme</button></li>
-        <li><button class="dropdown-item" type="button" id="button-join-2">Evergreens</button></li>
-        <li><button class="dropdown-item" type="button" id="button-join-3">Jazz</button></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><button class="dropdown-item" type="button" id="button-join-4">Musical</button></li>
-      </ul>
-    </div>
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Spiel-Titel" aria-label="Spiel-Titel" aria-describedby="button-creategame">
-      <button class="btn btn-outline-secondary" type="button" id="button-creategame">Neues Spiel erstellen</button>
-    </div>
-    <div class="input-group">
-      <button class="btn btn-outline-secondary" type="button" id="spotifyPlay">Play</button>
-      <button class="btn btn-outline-secondary" type="button" id="spotifyPause">Play</button>
-    </div>    
-    <div id="embed-iframe"></div>
-
-    <!--<button class="btn btn-light btn-next" data-target="#section2">Weiter</button>-->
   </section>
 
   <!-- Bereich 2 -->
@@ -108,7 +111,7 @@
     <button type="button" class="btn btn-primary scroll" scrollTo="start">Primary</button>
     
     <div class="d-flex gap-3 mt-3">
-      <button class="btn btn-outline-light btn-next" data-target="#section1">Zurück</button>
+      <button class="btn btn-outline-light btn-next" data-target="#start">Zurück</button>
       <button class="btn btn-light btn-next" data-target="#section3">Weiter</button>
     </div>
   </section>
@@ -155,7 +158,7 @@
   <!-- Bereich 4 -->
   <section id="section4">
     <h1>Vertikaler Bereich 4 🎉</h1>
-    <button class="btn btn-light btn-next" data-target="#section1">Zurück zum Anfang</button>
+    <button class="btn btn-light btn-next" data-target="#start">Zurück zum Anfang</button>
   </section>
   
   <script src="/socket.io/socket.io.js"></script>
