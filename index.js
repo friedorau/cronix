@@ -86,7 +86,7 @@ response.then((result) => console.log(result.output_text));*/
 
     socket.on("hello", (arg, callback) => {
       console.log(arg); // "world"
-      callback("got it");
+      callback(socket.id);
     });
     
     socket.on("getGames", (callback) => {
