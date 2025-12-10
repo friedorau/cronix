@@ -71,40 +71,35 @@
   <!-- Bereich 1 -->
   <section id="section1">
     <h1>CRONIX</h1>
-    <form class="row g-3 needs-validation" novalidate>
-      <div class="col-6 offset-3">
-        <label for="inputTeamName" class="form-label">Spieler- / Teamname</label>
-        <input type="text" class="form-control" id="inputTeamName" required>
-        <div class="valid-feedback">
-          Name geht klar!
-        </div>
-      </div>
-      <div class="col-6 offset-3">
-        <label for="inputGamePin" class="form-label">Spiel-PIN</label>
-        <input type="text" class="form-control" id="inputGamePin">
-        <div class="valid-feedback">
-          Spiel-PIN OK!
-        </div>
-      </div>
-      <div class="col-6 offset-3">
-        <button class="btn btn-lg btn-primary" type="submit">Spiel mit PIN beitreten</button>
-      </div>
-      <div class="col-6 offset-3">
-        <button class="btn btn-lg btn-primary">Offenem Spiel beitreten</button>
-      </div>
-      <div class="col-6 offset-3">
-        <button id="btnNewGame" class="btn btn-lg btn-primary">Neues Spiel starten</button>
-      </div>
-      <div class="col-6 offset-3">
-        <button id="spotifyPlay" class="btn btn-lg btn-primary">Play</button>
-      </div>
-      <div class="col-6 offset-3">
-        <button id="spotifyPause" class="btn btn-lg btn-primary">Pause</button>
-      </div>
-    </form>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="input-name">
+      <span class="input-group-text" id="input-name"></span>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Spiel-PIN" aria-label="Spiel-PIN" aria-describedby="button-joinwithpin">
+      <button class="btn btn-outline-secondary" type="button" id="button-joinwithpin">Spiel mit PIN beitreten</button>
+    </div>
+    <div class="input-group mb-3">
+      <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Spiel beitreten</button>
+      <ul class="dropdown-menu">
+        <li><button class="dropdown-item" type="button" id="button-join-1">Schlager extreme</button></li>
+        <li><button class="dropdown-item" type="button" id="button-join-2">Evergreens</button></li>
+        <li><button class="dropdown-item" type="button" id="button-join-3">Jazz</button></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><button class="dropdown-item" type="button" id="button-join-4">Musical</button></li>
+      </ul>
+    </div>
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Spiel-Titel" aria-label="Spiel-Titel" aria-describedby="button-creategame">
+      <button class="btn btn-outline-secondary" type="button" id="button-creategame">Neues Spiel erstellen</button>
+    </div>
+    <div class="input-group">
+      <button class="btn btn-outline-secondary" type="button" id="spotifyPlay">Play</button>
+      <button class="btn btn-outline-secondary" type="button" id="spotifyPause">Play</button>
+    </div>    
     <div id="embed-iframe"></div>
 
-    <button class="btn btn-light btn-next" data-target="#section2">Weiter</button>
+    <!--<button class="btn btn-light btn-next" data-target="#section2">Weiter</button>-->
   </section>
 
   <!-- Bereich 2 -->
@@ -169,7 +164,7 @@
     $(document).ready(function() {
       // Vertikales Scrollen
       $(".btn-next").click(function(e) {
-        e.preventDefault();
+        //e.preventDefault();
         const target = $($(this).data("target"));
         $("html").animate({
           scrollTop: target.offset().top
@@ -207,7 +202,8 @@
     const socket = io();
 
     socket.emit("hello", "world", (response) => {
-      console.log(response); // "got it"
+      //console.log(response);
+      $("#input-name").val(response);
     });
     
     $("#btnNewGame").click(function(e) {
