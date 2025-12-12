@@ -89,7 +89,7 @@ response.then((result) => console.log(result.output_text));*/
       callback(socket.id);
     });*/
 
-    socket.on("randomName", (callback) => {
+    socket.on("randomName", async (callback) => {
       const res = await pool.query('SELECT data FROM events');
       console.log(res.rows);
       callback(res.rows[0].artist);
