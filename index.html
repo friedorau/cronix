@@ -110,8 +110,8 @@
           <form>
             <h1 class="nabla mb-5">CRONIX</h1>
             <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Name" aria-label="Name" aria-describedby="input-name" id="input-name">
-              <button class="btn btn-outline-light" type="button" id="button-randomName">Sag meinen Namen!</button>
+              <input type="text" class="form-control" placeholder="Call me maybe..." aria-label="Name" aria-describedby="input-name" id="input-name">
+              <button class="btn btn-outline-light" type="button" id="button-randomName">Say my name!</button>
             </div>
             <div class="input-group mb-3">
               <input type="text" class="form-control" placeholder="Spiel-PIN" aria-label="Spiel-PIN" aria-describedby="button-joinWithPin" id="input-gamePin">
@@ -203,6 +203,16 @@
   <script src="/socket.io/socket.io.js"></script>
 
   <script>
+  
+    let player = { id: "", name: "", score: 0 };
+    
+    const socket = io();
+    socket.on("connect", () => {
+      console.log("Socket-ID: ", socket.id);
+      player.id = socket.id;
+      player.name = "user-" + socket.id;
+    });
+    
     $(document).ready(function() {
       // Vertikales Scrollen
       $(".btn-next").click(function() {
@@ -229,6 +239,37 @@
           $("#slides").css("transform", `translateX(-${currentSlide * 100}vw)`);
         }
       });
+      
+      $("#btnNewGame").click(function(e) {
+        e.preventDefault();
+        socket.emit("getGames", (response) => {
+          console.log(response);
+        });
+      });
+    
+      $("#input-gamePin").on("input", function() {
+        const pin = $(this).val();
+  
+        // Prüfen: genau 4 Ziffern
+        const isValid = /^\d{4}$/.test(pin);
+  
+        // Button aktivieren oder deaktivieren
+        $("#button-joinWithPin").prop("disabled", !isValid);
+  
+        if (isValid) {
+          $(this).removeClass("is-invalid").addClass("is-valid");
+        } else {
+          $(this).removeClass("is-valid").addClass("is-invalid");
+       }    
+      });
+
+      $("#button-randomName").click(function() {
+        $(this).prop("disabled", true).text("...");
+        socket.emit("randomName", (response) => {
+          $("#input-name").val(response);
+          $("#button-randomName").prop("disabled", false).text("Say my name!");
+        });
+      });
     });
 
 
@@ -240,19 +281,10 @@
       }, 500);
     });*/
 
-    const socket = io();
-
     /*socket.emit("hello", "world", (response) => {
       //console.log(response);
       $("#input-name").val("user-" + response);
     });*/
-    
-    $("#btnNewGame").click(function(e) {
-      e.preventDefault();
-      socket.emit("getGames", (response) => {
-        console.log(response);
-      });
-    });
 
     window.onSpotifyIframeApiReady = (IFrameAPI) => {
       const element = document.getElementById('embed-iframe');
@@ -274,28 +306,6 @@
       };
       IFrameAPI.createController(element, options, callback);
     };
-  
-    $("#input-gamePin").on("input", function() {
-      const pin = $(this).val();
-  
-      // Prüfen: genau 4 Ziffern
-      const isValid = /^\d{4}$/.test(pin);
-  
-      // Button aktivieren oder deaktivieren
-      $("#button-joinWithPin").prop("disabled", !isValid);
-  
-      if (isValid) {
-        $(this).removeClass("is-invalid").addClass("is-valid");
-      } else {
-        $(this).removeClass("is-valid").addClass("is-invalid");
-      }    
-    });
-
-    $("#button-randomName").click(function() {
-      socket.emit("randomName", (response) => {
-        $("#input-name").val(response);
-      });
-    });
     
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" crossorigin="anonymous"></script>
