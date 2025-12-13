@@ -93,6 +93,7 @@ response.then((result) => console.log(result.output_text));*/
       const res = await pool.query('SELECT data FROM events');
       console.log(res.rows);
       callback(res.rows[0].artist);
+      
     });
     
     socket.on("getGames", (callback) => {
