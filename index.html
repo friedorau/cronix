@@ -102,43 +102,63 @@
     </div>
   </nav>-->
 
-  <!-- Start -->
-  <section id="start">
-    <div class="container">
-      <div class="row justify-content-center">
-        <div class="col-10 col-sm-8 col-md-6">
-          <form>
-            <h1 class="nabla mb-5">CRONIX</h1>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Call me maybe..." aria-label="Name" aria-describedby="input-name" id="input-name">
-              <button class="btn btn-outline-light" type="button" id="button-randomName">Say my name!</button>
+  <!-- Bereich 3 – horizontale Slides -->
+  <section class="overflow-hidden" id="start">
+    <div class="horizontal-container" id="slides">
+      <div class="slide">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-10 col-sm-8 col-md-6">
+              <form>
+                <h1 class="nabla mb-5">CRONIX</h1>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Call me maybe..." aria-label="Name" aria-describedby="input-name" id="input-name">
+                  <button class="btn btn-outline-light" type="button" id="button-randomName">Say my name!</button>
+                </div>
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Spiel-PIN" aria-label="Spiel-PIN" aria-describedby="button-joinWithPin" id="input-gamePin">
+                  <button class="btn btn-outline-light" type="button" id="button-joinWithPin" disabled>Spiel mit PIN beitreten</button>
+                </div>
+                <div class="input-group mb-3">
+                  <select class="form-select" id="inputGroupSelectGame" aria-label="Spiel auswählen und beitreten">
+                    <option selected>Spiel auswählen</option>
+                    <option value="1">Schlager</option>
+                    <option value="2">Pop</option>
+                    <option value="3">Musical</option>
+                  </select>
+                  <button class="btn btn-outline-light" type="button" disabled>Spiel beitreten</button>
+                </div>        
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control" placeholder="Wicked Game" aria-label="Spiel-Titel" aria-describedby="button-creategame" id="input-gameTitle">
+                  <button class="btn btn-outline-light nextSlide" type="button" id="button-creategame" disabled>Neues Spiel erstellen</button>
+                </div>
+                <div class="input-group">
+                  <button class="btn btn-outline-light" type="button" id="spotifyPlay">Play</button>
+                  <label class="input-group-text" for="spotify-buttons">Spotify</label>
+                  <button class="btn btn-outline-light" type="button" id="spotifyPause">Play</button>
+                </div>    
+                <div id="embed-iframe"></div>
+            
+                <!--<button class="btn btn-light btn-next" data-target="#section2">Weiter</button>-->
+              </form>
             </div>
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Spiel-PIN" aria-label="Spiel-PIN" aria-describedby="button-joinWithPin" id="input-gamePin">
-              <button class="btn btn-outline-light" type="button" id="button-joinWithPin" disabled>Spiel mit PIN beitreten</button>
-            </div>
-            <div class="input-group mb-3">
-              <select class="form-select" id="inputGroupSelectGame" aria-label="Spiel auswählen und beitreten">
-                <option selected>Spiel auswählen</option>
-                <option value="1">Schlager</option>
-                <option value="2">Pop</option>
-                <option value="3">Musical</option>
-              </select>
-              <button class="btn btn-outline-light" type="button" disabled>Spiel beitreten</button>
-            </div>        
-            <div class="input-group mb-3">
-              <input type="text" class="form-control" placeholder="Spiel-Titel" aria-label="Spiel-Titel" aria-describedby="button-creategame">
-              <button class="btn btn-outline-light" type="button" id="button-creategame">Neues Spiel erstellen</button>
-            </div>
-            <div class="input-group">
-              <button class="btn btn-outline-light" type="button" id="spotifyPlay">Play</button>
-              <label class="input-group-text" for="spotify-buttons">Spotify</label>
-              <button class="btn btn-outline-light" type="button" id="spotifyPause">Play</button>
-            </div>    
-            <div id="embed-iframe"></div>
-        
-            <!--<button class="btn btn-light btn-next" data-target="#section2">Weiter</button>-->
-          </form>
+          </div>
+        </div>
+      </div>
+      <div class="slide">
+        Slide 2        
+        <div class="d-flex justify-content-center gap-3 mt-3">
+          <button class="btn btn-dark prevSlide">◀️</button>
+          <button class="btn btn-dark nextSlide">▶️</button>
+          <button class="btn btn-outline-dark btn-next mt-4" data-target="#section4">Zum nächsten Bereich</button>
+        </div>
+      </div>
+      <div class="slide">
+        Slide 3
+        <div class="d-flex justify-content-center gap-3 mt-3">
+          <button class="btn btn-dark prevSlide">◀️</button>
+          <button class="btn btn-dark nextSlide">▶️</button>
+          <button class="btn btn-outline-dark btn-next mt-4" data-target="#section4">Zum nächsten Bereich</button>
         </div>
       </div>
     </div>
@@ -255,6 +275,22 @@
   
         // Button aktivieren oder deaktivieren
         $("#button-joinWithPin").prop("disabled", !isValid);
+  
+        if (isValid) {
+          $(this).removeClass("is-invalid").addClass("is-valid");
+        } else {
+          $(this).removeClass("is-valid").addClass("is-invalid");
+       }    
+      });
+
+      $("#input-gameTitle").on("input", function() {
+        const title = $(this).val();
+  
+        // Prüfen: genau 4 Ziffern
+        const isValid = /^.{4,}$/.test(title);
+  
+        // Button aktivieren oder deaktivieren
+        $("#button-creategame").prop("disabled", !isValid);
   
         if (isValid) {
           $(this).removeClass("is-invalid").addClass("is-valid");
